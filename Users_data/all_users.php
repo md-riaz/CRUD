@@ -56,36 +56,4 @@ $run_query = mysqli_query($conn, $select_data);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include '../includes/footer.php'; ?>

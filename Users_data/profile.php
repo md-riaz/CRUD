@@ -56,7 +56,7 @@ $data = mysqli_fetch_assoc($run_query);
     <div class="header">
     </div>
     <div class="avatar">
-        <img src=" <?= $data['img_dir'] ?>" alt="Profile Pic">
+        <img src="<?= $data['img_dir'] ?>" alt="Profile Pic">
     </div>
     <div class="details">
         <div class="username">
@@ -92,9 +92,10 @@ $data = mysqli_fetch_assoc($run_query);
 
 <!-- if img src is empty then show placeholder img -->
 <script>
-    var imgtag = document.querySelector("img");
-    if (imgtag.src == " ") {
-        imgtag.setAttribute("src", "img/img-placeholder.png");
+    var img = document.querySelector("img");
+    var imgsrc = img.getAttribute('src');
+    if (imgsrc == "null") {
+        img.setAttribute("src", "img/img-placeholder.png");
     }
 </script>
 <?php include '../includes/footer.php'; ?>

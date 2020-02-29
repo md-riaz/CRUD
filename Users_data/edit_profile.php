@@ -76,7 +76,7 @@ $data = mysqli_fetch_assoc($run_query);
         <div class="header">
         </div>
         <div class="avatar">
-            <img src=" " alt="Profile Pic" id="ProfileDisplay">
+            <img src="<?= $data['img_dir'] ?>" alt="Profile Pic" id="ProfileDisplay">
             <input type="file" name="ProfileImage" onchange="displayImg(this)" id="ProfileImage" style="display: none">
             <span onclick="imgup()" class="imgicon"><i class="fas fa-plus"></i></span>
         </div>
@@ -238,9 +238,10 @@ $data = mysqli_fetch_assoc($run_query);
         }
     }
     // if img src is empty then show placeholder img 
-    var imgtag = document.querySelector("img");
-    if (imgtag.src == " ") {
-        imgtag.setAttribute("src", "img/img-placeholder.png");
+    var img = document.querySelector("img");
+    var imgsrc = img.getAttribute('src');
+    if (imgsrc == "null") {
+        img.setAttribute("src", "img/img-placeholder.png");
     }
 </script>
 

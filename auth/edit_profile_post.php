@@ -51,7 +51,7 @@ if (isset($_FILES)) {
 }
 // if img extention is empty then img_dir is empty 
 if ($imageFileType == "") {
-  $img_dir = "";
+  $img_dir = "null";
 } else {
   $img_dir = 'img/' . $Cryptograph_alphanumeric . $new_name . "." . $imageFileType;
 }
