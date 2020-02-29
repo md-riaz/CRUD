@@ -1,71 +1,77 @@
+<?php include "conn.php"; ?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Form</title>
-  </head>
-  <body>
+<html lang="en">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 m-auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+  <title>Form Submition with mysql</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      <div class="card">
-        <div class="card-header text-center bg-success text-white">
-          Form Validation
-        </div>
-        <div class="card-body">
+<body>
+  <div class="testbox">
+    <h1>Registration</h1>
 
-          <form action="submit.php" method="post">
-            <div class="form-group">
-              <input type="text" name="fname" class="form-control" placeholder="Enter Full Name">
-              <?php if (isset($_GET['fnerr'])) {?>
-                <p class="text-danger "><?php echo $_GET['fnerr']; ?></p>
-              <?php } ?>
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" class="form-control" placeholder="Enter email">
-              <?php if (isset($_GET['emerr'])) {?>
-                <p class="text-danger "><?php echo $_GET['emerr']; ?></p>
-              <?php } ?>
-            </div>
-            <div class="form-group">
-              <input type="password" name="pass" class="form-control" placeholder="Password">
-              <?php if (isset($_GET['pserr'])) {?>
-                <p class="text-danger "><?php echo $_GET['pserr']; ?></p>
-              <?php } ?>
-            </div>
-            <div class="form-group">
-              <input type="password" name="repass" class="form-control" placeholder="Re - password">
-              <?php if (isset($_GET['repaerr'])) {?>
-                <p class="text-danger "><?php echo $_GET['repaerr']; ?></p>
-              <?php } ?>
-            </div>
-            <div class="form-group">
-              <input type="radio" value="male" name="gender">Male
-              <input type="radio" value="Female" name="gender">Female
-              <?php if (isset($_GET['gerr'])) {?>
-                <p class="text-danger "><?php echo $_GET['gerr']; ?></p>
-              <?php } ?>
-            </div>
-            <div class="form-check mb-3">
-              <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1" value="Checked">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+    <form action="submit.php" method="post">
 
-          </form>
+      <hr>
+      <?php if (!empty($_GET['sm'])) { ?><span class="text-success"><?php echo $_GET['sm'] ?></span><?php } ?>
 
-        </div>
+      <label id="icon" for="email"><i class="icon-envelope "></i></label>
+      <input type="text" name="email" id="email" placeholder="Email" />
+      <?php if (!empty($_GET['emailerr'])) { ?><span class="text-danger"><?php echo $_GET['emailerr'] ?></span><?php } ?>
+
+      <label id="icon" for="name"><i class="icon-user"></i></label>
+      <input type="text" name="name" id="name" placeholder="Name" />
+      <?php if (!empty($_GET['fnerr'])) { ?><span class="text-danger"><?php echo $_GET['fnerr'] ?></span><?php } ?>
+
+      <label id="icon" for="pass"><i class="icon-shield"></i></label>
+      <input type="password" name="pass" id="pass" placeholder="Password" />
+      <?php if (!empty($_GET['passerr'])) { ?><span class="text-danger"><?php echo $_GET['passerr'] ?></span><?php } ?>
+
+      <div class="gender">
+        <input type="radio" value="male" id="male" name="gender" checked />
+        <label for="male" class="radio" chec>Male</label>
+        <input type="radio" value="female" id="female" name="gender" />
+        <label for="female" class="radio">Female</label>
       </div>
+      <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
+      <button type="submit" class="button">Register</button>
 
-    </div>
+    </form>
   </div>
-</div>
+  <div class="view">
+    <h3>All users data</h3>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $sql = "SELECT *  FROM users";
+        $fire = mysqli_query($conn, $sql);
+        while ($user = mysqli_fetch_assoc($fire)) { ?>
+          <tr>
+            <td><?php echo $user['emails']; ?></td>
+            <td><?php echo $user['names']; ?></td>
+            <td><?php echo $user['passwords']; ?></td>
+            <td><?php echo $user['gender']; ?></td>
+          </tr>
 
+        <?php } ?>
 
-  </body>
+      </tbody>
+    </table>
+  </div>
+</body>
+
 </html>
