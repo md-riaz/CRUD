@@ -94,7 +94,7 @@ $data = mysqli_fetch_assoc($run_query);
 <script>
     var img = document.querySelector("img");
     var imgsrc = img.getAttribute('src');
-    if (imgsrc == "null") {
+    if (imgsrc == "") {
         img.setAttribute("src", "img/img-placeholder.png");
     }
 </script>
