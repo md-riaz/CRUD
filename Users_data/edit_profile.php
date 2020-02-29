@@ -239,7 +239,7 @@ $data = mysqli_fetch_assoc($run_query);
     }
     // if img src is empty then show placeholder img 
     var imgtag = document.querySelector("img");
-    if (imgtag.src = " ") {
+    if (imgtag.src == " ") {
         imgtag.setAttribute("src", "img/img-placeholder.png");
     }
 </script>
