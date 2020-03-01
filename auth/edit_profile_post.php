@@ -13,7 +13,7 @@ $imageFileType = strtolower(pathinfo($_FILES['ProfileImage']['name'], PATHINFO_E
 //new name of img
 $new_name = $usernm;
 //combine file name,extention with random number & set file directory.
-$target_file = '../Users_data/img/' . $Cryptograph_alphanumeric . $new_name . "." . $imageFileType;
+$target_file = '../users_data/img/' . $Cryptograph_alphanumeric . $new_name . "." . $imageFileType;
 
 $uploadOk = 1; //if condition is not fullfilled set this to 0 to stop upload.
 
@@ -126,7 +126,7 @@ if (!$pass_check || strlen($pass) < 8) {
 
 // if any error found then go to previews page else check data for duplicates and if no duplicate then insert to database
 if ($o != 0) {
-  header("location:../Users_data/edit_profile.php?id=$id");
+  header("location:../users_data/edit_profile.php?id=$id");
 } else {
   //Check email for double in database
   $check_double = "SELECT COUNT(*) as duplicate FROM `users` WHERE emails = '$email'";
@@ -139,12 +139,12 @@ if ($o != 0) {
 
   //if error found, show error messeger
   if ($get_data['duplicate'] == 2) {
-    header("location:../Users_data/edit_profile.php?id=$id");
+    header("location:../users_data/edit_profile.php?id=$id");
     $_SESSION["emDerr"] = "Email is already exist!!";
   } else {
     //if error found, show error messeger
     if ($get_data_username['duplicate'] == 2) {
-      header("location:../Users_data/edit_profile.php?id=$id");
+      header("location:../users_data/edit_profile.php?id=$id");
       $_SESSION["uDerr"] = "Username is already exist!!";
     } else {
       // update data to database
@@ -154,7 +154,7 @@ if ($o != 0) {
 
       if ($run_query === TRUE) {
         $_SESSION["success"] = "You have successfully updated your info.";
-        header("location:../Users_data/profile.php?id=$id");
+        header("location:../users_data/profile.php?id=$id");
       }
     }
   }
