@@ -38,31 +38,34 @@ $pass_check = preg_match($regex, $pass);
 $o = 0;
 
 if (empty($username)) {
-  $_SESSION["uerr"] = "Username is empty!!";
+  $_SESSION["uerr"] = "*username field is required";
   $o++;
 }
 if (empty($email)) {
-  $_SESSION["emerr"] = "Email is empty!!";
+  $_SESSION["emerr"] = "*email is required";
   $o++;
-}
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $_SESSION["emFerr"] = "Email Format is invalid!!";
-  $o++;
+} else {
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION["emFerr"] = "*email Format is invalid!!";
+    $o++;
+  }
 }
 
 if (empty($name)) {
-  $_SESSION["fnerr"] = "Name is empty!!";
+  $_SESSION["fnerr"] = "*name is required";
   $o++;
 }
 
 if (empty($university)) {
-  $_SESSION["unierr"] = "Institute Name is empty!!";
+  $_SESSION["unierr"] = "*institute name is empty!!";
   $o++;
 }
 
 if (!$pass_check || strlen($pass) < 8) {
-  $_SESSION["passerr"] = "Use both upper and lowercase characters, Include at least one symbol (# $ ! % & etc...), a number & Minimum 8 Characters";
+  $_SESSION["passerr"] =
+    "*use both uppercase & lowercase <br>
+     *atleast a number and symbol<br>
+     *minimum 8 characters";
   $o++;
 }
 

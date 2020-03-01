@@ -42,7 +42,8 @@ $data = mysqli_fetch_assoc($run_query);
         <p><?= $_SESSION["success"] ?></p>
     </div>
 
-<?php endif ?>
+<?php endif;
+unset($_SESSION["success"]) ?>
 <!-- if session found echo that with alert -->
 <?php if (isset($_SESSION["succm"])) : ?>
 
@@ -50,7 +51,9 @@ $data = mysqli_fetch_assoc($run_query);
         <p><?= $_SESSION["succm"] ?></p>
     </div>
 
-<?php endif ?>
+<?php endif;
+unset($_SESSION["succm"]) ?>
+
 <input type="checkbox" id="pure-toggle" hidden />
 <label id="card-user" class="pure-toggle" for="pure-toggle" style="cursor: auto;">
     <div class="header">

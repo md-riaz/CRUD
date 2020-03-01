@@ -17,12 +17,12 @@ $target_file = '../Users_data/img/' . $Cryptograph_alphanumeric . $new_name . ".
 
 $uploadOk = 1; //if condition is not fullfilled set this to 0 to stop upload.
 
-if (isset($_FILES)) {
+if (isset($_POST["ProfileImage"])) {
   //set source path to a variable.
   $source_path = $_FILES['ProfileImage']['tmp_name'];
 
   // Check if image file is a actual image or fake image
-  if (isset($_POST["submit"])) {
+  if (isset($_POST["ProfileImage"])) {
     $check = getimagesize($source_path);
     if ($check !== false) {
       $_SESSION["sizeerr"] = "File is an image - " . $check["mime"] . ".";
@@ -93,11 +93,11 @@ $pass_check = preg_match($regex, $pass);
 $o = 0;
 
 if (empty($username)) {
-  $_SESSION["uerr"] = "Username is empty!!";
+  $_SESSION["uerr"] = "*username field is required";
   $o++;
 }
 if (empty($email)) {
-  $_SESSION["emerr"] = "Email is empty!!";
+  $_SESSION["emerr"] = "Email is required";
   $o++;
 }
 
@@ -107,7 +107,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 if (empty($name)) {
-  $_SESSION["fnerr"] = "Name is empty!!";
+  $_SESSION["fnerr"] = "Name is required";
   $o++;
 }
 
@@ -117,7 +117,10 @@ if (empty($university)) {
 }
 
 if (!$pass_check || strlen($pass) < 8) {
-  $_SESSION["passerr"] = "Use both upper and lowercase characters, Include at least one symbol (# $ ! % & etc...), a number & Minimum 8 Characters";
+  $_SESSION["passerr"] =
+    "*use both uppercase & lowercase <br>
+  *atleast a number and symbol<br>
+  *minimum 8 characters";
   $o++;
 }
 

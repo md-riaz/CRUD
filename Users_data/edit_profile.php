@@ -85,25 +85,29 @@ $data = mysqli_fetch_assoc($run_query);
             <div class="alert-warning" role="alert">
                 <p><?= $_SESSION["sizeerr"] ?></p>
             </div>
-        <?php endif ?>
+        <?php endif;
+        unset($_SESSION["sizeerr"]) ?>
         <!-- if session found echo that with alert -->
         <?php if (isset($_SESSION["typeerr"])) : ?>
             <div class="alert-warning" role="alert">
                 <p><?= $_SESSION["typeerr"] ?></p>
             </div>
-        <?php endif ?>
+        <?php endif;
+        unset($_SESSION["typeerr"]) ?>
         <!-- if session found echo that with alert -->
         <?php if (isset($_SESSION["err"])) : ?>
             <div class="alert-warning" role="alert">
                 <p><?= $_SESSION["err"] ?></p>
             </div>
-        <?php endif ?>
+        <?php endif;
+        unset($_SESSION["err"]) ?>
         <!-- if session found echo that with alert -->
         <?php if (isset($_SESSION["serr"])) : ?>
             <div class="alert-warning" role="alert">
                 <p><?= $_SESSION["serr"] ?></p>
             </div>
-        <?php endif ?>
+        <?php endif;
+        unset($_SESSION["serr"]) ?>
 
 
         <div class="details">
@@ -114,11 +118,11 @@ $data = mysqli_fetch_assoc($run_query);
                     <?php if (isset($_SESSION["uerr"])) : ?>
 
                         <div class="alert-warning" role="alert">
-                            <h4 class="alert-heading">Ohh No!</h4>
                             <p><?= $_SESSION["uerr"] ?></p>
                         </div>
 
-                    <?php endif ?>
+                    <?php endif;
+                    unset($_SESSION["uerr"]) ?>
                     <!-- if session found echo that with alert -->
                     <?php if (isset($_SESSION["uDerr"])) : ?>
 
@@ -127,7 +131,8 @@ $data = mysqli_fetch_assoc($run_query);
                             <p><?= $_SESSION["uDerr"] ?></p>
                         </div>
 
-                    <?php endif ?>
+                    <?php endif;
+                    unset($_SESSION["uDerr"]) ?>
                 </h3>
             </div>
 
@@ -142,7 +147,8 @@ $data = mysqli_fetch_assoc($run_query);
                     <h4 class="alert-heading">Ohh No!</h4>
                     <p><?= $_SESSION["emerr"] ?></p>
                 </div>
-            <?php endif ?>
+            <?php endif;
+            unset($_SESSION["emerr"]) ?>
             <!-- if session found echo that with alert -->
             <?php if (isset($_SESSION["emFerr"])) : ?>
 
@@ -151,7 +157,8 @@ $data = mysqli_fetch_assoc($run_query);
                     <p><?= $_SESSION["emFerr"] ?></p>
                 </div>
 
-            <?php endif ?>
+            <?php endif;
+            unset($_SESSION["emFerr"]) ?>
             <!-- if session found echo that with alert -->
             <?php if (isset($_SESSION["emDerr"])) : ?>
 
@@ -160,7 +167,8 @@ $data = mysqli_fetch_assoc($run_query);
                     <p><?= $_SESSION["emDerr"] ?></p>
                 </div>
 
-            <?php endif ?>
+            <?php endif;
+            unset($_SESSION["emDerr"]) ?>
 
             <div class="form_group">
                 <label id="icon" for="name"><i class="fas fa-user"></i></label>
@@ -174,7 +182,8 @@ $data = mysqli_fetch_assoc($run_query);
                     <p><?= $_SESSION["fnerr"] ?></p>
                 </div>
 
-            <?php endif ?>
+            <?php endif;
+            unset($_SESSION["fnerr"]) ?>
             <div class="form_group">
                 <label id="icon" for="university"><i class="fas fa-university"></i></label>
                 <input type="text" name="university" id="university" value="<?= $data['university']; ?>" />
@@ -188,7 +197,8 @@ $data = mysqli_fetch_assoc($run_query);
                     <p><?= $_SESSION["unierr"] ?></p>
                 </div>
 
-            <?php endif ?>
+            <?php endif;
+            unset($_SESSION["unierr"]) ?>
 
             <div class="form_group">
                 <label id="icon" for="pass"><i class="fas fa-lock"></i></label>
@@ -206,7 +216,8 @@ $data = mysqli_fetch_assoc($run_query);
                     <p><?= $_SESSION["passerr"] ?></p>
                 </div>
 
-            <?php endif ?>
+            <?php endif;
+            unset($_SESSION["passerr"]) ?>
             <div class="gender">
                 <input type="radio" value="male" id="male" name="gender" checked />
                 <label for="male" class="radio" chec>Male</label>
@@ -240,7 +251,7 @@ $data = mysqli_fetch_assoc($run_query);
     // if img src is empty then show placeholder img 
     var img = document.querySelector("img");
     var imgsrc = img.getAttribute('src');
-    if (imgsrc == "null") {
+    if (imgsrc == "") {
         img.setAttribute("src", "img/img-placeholder.png");
     }
 </script>

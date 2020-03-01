@@ -18,7 +18,9 @@
         <p><?= $_SESSION["success"] ?></p>
       </div>
 
-    <?php endif ?>
+    <?php endif;
+    unset($_SESSION["success"]) ?>
+
     <div class="form_group">
       <label id="icon" for="username"><i class="far fa-id-badge"></i></label>
       <input type="text" name="username" id="username" placeholder="Username" />
@@ -26,20 +28,21 @@
       <?php if (isset($_SESSION["uerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
           <p><?= $_SESSION["uerr"] ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["uerr"]) ?>
       <!-- if session found echo that with alert -->
       <?php if (isset($_SESSION["uDerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
+
           <p><?= $_SESSION["uDerr"] ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["uDerr"]) ?>
     </div>
 
     <div class="form_group">
@@ -49,28 +52,31 @@
       <?php if (isset($_SESSION["emerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
+
           <p><?= $_SESSION["emerr"] ?></p>
         </div>
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["emerr"]) ?>
       <!-- if session found echo that with alert -->
       <?php if (isset($_SESSION["emFerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
+
           <p><?= $_SESSION["emFerr"] ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["emFerr"]) ?>
       <!-- if session found echo that with alert -->
       <?php if (isset($_SESSION["emDerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
-          <p><?= $_SESSION["emDerr"] ?></p>
+
+          <p><?= $_SESSION[""] ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["emDerr"]) ?>
     </div>
 
     <div class="form_group">
@@ -80,11 +86,12 @@
       <?php if (isset($_SESSION["fnerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
+
           <p><?= $_SESSION["fnerr"] ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["fnerr"]) ?>
     </div>
 
     <div class="form_group">
@@ -94,16 +101,17 @@
       <?php if (isset($_SESSION["unierr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
+
           <p><?= $_SESSION["unierr"] ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["unierr"]) ?>
     </div>
 
     <div class="form_group">
       <label id="icon" for="pass"><i class="fas fa-lock"></i></label>
-      <input type="password" name="pass" id="pass" placeholder="Password" />
+      <input type="password" name="pass" id="pass" placeholder="Password (A-z,0-9,@#$%*)" title="a-z,A-Z,0-9,!@#$%^&*" />
       <span class="pass_eye" onclick="change_eye()">
         <i class="fas fa-eye" style="display: none;"></i>
         <i class="fas fa-eye-slash"></i>
@@ -112,11 +120,12 @@
       <?php if (isset($_SESSION["passerr"])) : ?>
 
         <div class="alert-warning" role="alert">
-          <h4 class="alert-heading">Ohh No!</h4>
-          <p><?= $_SESSION["passerr"] ?></p>
+
+          <p><?= $_SESSION["passerr"]; ?></p>
         </div>
 
-      <?php endif ?>
+      <?php endif;
+      unset($_SESSION["passerr"]);  ?>
     </div>
     <div class="gender">
       <input type="radio" value="male" id="male" name="gender" checked />
