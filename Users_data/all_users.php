@@ -4,6 +4,9 @@
 $select_data = "SELECT * FROM `users`";
 //run that query
 $run_query = mysqli_query($conn, $select_data);
+
+//Row Numbers
+$rows = mysqli_num_rows($run_query);
 ?>
 
 <head>
@@ -78,6 +81,7 @@ if (isset($_SESSION["deleted"])) {
                 </tbody>
             </table>
         </div>
+        <div class="item_no">Showing <?= $rows ?> rows</div>
     </div>
 </div>
 
