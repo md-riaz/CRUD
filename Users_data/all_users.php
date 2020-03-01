@@ -56,25 +56,7 @@ if (isset($_SESSION["deleted"])) {
                                 |
                                 <a href="edit_profile.php?id=<?= $value['id'] ?>"><span class="edit"> <i class="far fa-edit"></i> Edit </span></a>
                                 |
-                                <a id="dlbtn"><span class="delete"> <i class="fas fa-trash"></i> Delete </span></a>
-
-                                <!-- The Modal -->
-                                <div class="modal">
-
-                                    <!-- Modal content -->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <span class="close">&times;</span>
-                                            <h2>DELETE CONFIRMATION</h2>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to delete your account? If you delete your account, you will permanently lose all your information.
-                                                <a href="delete_profile.php?id=<?= $value['id'] ?>"><button class="button btn-danger" style="    margin: 10px 0 0 0;">confirm</button></a></p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                <a id="dlbtn" onclick="modal()"><span class="delete"> <i class="fas fa-trash"></i> Delete </span></a>
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -84,7 +66,23 @@ if (isset($_SESSION["deleted"])) {
         <div class="item_no">Showing <?= $rows ?> rows</div>
     </div>
 </div>
+<!-- The Modal -->
+<div class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>DELETE CONFIRMATION</h2>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete your account? If you delete your account, you will permanently lose all your information.
+                <a href="delete_profile.php?id=<?= $value['id'] ?>"><button class="button btn-danger" style="    margin: 10px 0 0 0;">confirm</button></a></p>
+        </div>
+
+    </div>
+
+</div>
 <script>
     // if img src is empty then show placeholder img 
     var img = document.querySelector("img");
@@ -93,30 +91,25 @@ if (isset($_SESSION["deleted"])) {
         img.setAttribute("src", "img/img-placeholder.png");
     }
 
+    function modal() {
+        // Get the modal
+        var modal = document.querySelector(".modal");
 
-    // Get the modal
-    var modal = document.querySelector(".modal");
+        // Get the <span> element that closes the modal
+        var span = document.querySelector(".close");
 
-    // Get the button that opens the modal
-    var dlbtn = document.querySelector("#dlbtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.querySelector(".close");
-
-    // When the user clicks the button, open the modal 
-    dlbtn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
             modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+            }
         }
     }
 </script>
