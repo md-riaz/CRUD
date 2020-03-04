@@ -17,12 +17,12 @@ $target_file = '../users_data/img/' . $Cryptograph_alphanumeric . $new_name . ".
 
 $uploadOk = 1; //if condition is not fullfilled set this to 0 to stop upload.
 
-if (isset($_POST["ProfileImage"])) {
+if (isset($_FILES["ProfileImage"])) {
   //set source path to a variable.
   $source_path = $_FILES['ProfileImage']['tmp_name'];
 
   // Check if image file is a actual image or fake image
-  if (isset($_POST["ProfileImage"])) {
+  if (isset($_FILES["ProfileImage"])) {
     $check = getimagesize($source_path);
     if ($check !== false) {
       $_SESSION["sizeerr"] = "File is an image - " . $check["mime"] . ".";
